@@ -1,7 +1,8 @@
 # Netflix 
 
-## Project Structure
 
+
+## Features
 - Home Page
 - Login Screen
 - Browse

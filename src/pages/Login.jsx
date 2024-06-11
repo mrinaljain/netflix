@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { LOGO, USER_AVATAR } from '../utils/constants';
 
 function Login() {
 
@@ -12,7 +13,7 @@ function Login() {
    const [isError, setIsError] = useState(false)
    const [signin, setSignin] = useState(true)
    const isSignup = searchParams.get("signup");
-   const navigate = useNavigate();
+
    const dispatch = useDispatch();
    const style = {
       backgroundImage: "url('https://assets.nflxext.com/ffe/siteui/vlv3/cacfadb7-c017-4318-85e4-7f46da1cae88/e43aa8b1-ea06-46a5-abe3-df13243e718d/IN-en-20240603-popsignuptwoweeks-perspective_alpha_website_large.jpg')",
@@ -33,14 +34,14 @@ function Login() {
       let name = formData.name;
       let email = formData.email;
       let password = formData.password;
-      console.log(formData);
+
       if (signin) {
          signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                // Signed in 
                const user = userCredential.user;
                const displayName = user.displayName;
-               navigate("/browse");
+
             })
             .catch((error) => {
                const errorCode = error.code;
@@ -54,7 +55,7 @@ function Login() {
                // update user profile after signin
                updateProfile(user, {
                   displayName: name,
-                  photoURL: "https://avatars.githubusercontent.com/mrinaljain"
+                  photoURL: USER_AVATAR
                }).then(() => {
                   // Profile updated!
                   const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -69,7 +70,7 @@ function Login() {
                   // An error occurred
                   // ...
                });
-               navigate("/browse");
+
             })
             .catch((error) => {
                const errorCode = error.code;
@@ -92,22 +93,25 @@ function Login() {
 
    function toggleAuth() {
       let isSignup = searchParams.get("signup");
-      console.log("isSignup", isSignup);
       if (isSignup == "true") {
          searchParams.delete("signup")
          setSearchParams(searchParams);
       }
       else {
-         console.log("ELSEEE");
          setSearchParams({ signup: "true" });
       }
 
+   }
+   const inputStyle = {
+      backgroundColor: "#465a7e66",
+      borderWidth: "0.0625rem",
+      borderColor: "rgba(128, 128, 128, 0.7",
    }
    return (
       <div className="relative">
          <nav className='bg-transparent z-10  flex w-[66%] mx-auto absolute top-0 left-0 right-0'>
             <img className='w-36'
-               src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="netflix-logo" />
+               src={LOGO} alt="netflix-logo" />
          </nav>
          <div
             className='w-[100vw] h-[100vh] relative flex flex-col  items-center justify-center' style={style} >
@@ -120,20 +124,23 @@ function Login() {
                <form className='flex flex-col' onSubmit={handleAuth}>
                   {!signin && <input
                      type="text"
-                     className='text-white font-light border border-white rounded-md px-3 py-3 bg-transparent my-5'
+                     className='text-white font-light border border-white rounded-md px-3 py-3 my-5 active:border-white focus:border-white'
+                     style={inputStyle}
                      placeholder='Name'
                      name='name'
                      onChange={handleChange} />}
                   <input
                      type="email"
-                     className='text-white font-light border border-white rounded-md px-3 py-3 bg-transparent my-5'
+                     className='text-white font-light border border-white rounded-md px-3 py-3 my-5 active:border-white focus:border-white'
+                     style={inputStyle}
                      placeholder='Email'
                      name='email'
                      onChange={handleChange} />
                   <input
                      type="password"
                      autoComplete=''
-                     className='text-white font-light border border-white rounded-sm px-3 py-3 bg-transparent my-5'
+                     className='text-white font-light border border-white rounded-sm px-3 py-3  my-5 active:border-white focus:border-white'
+                     style={inputStyle}
                      placeholder='Password'
                      name='password'
                      onChange={handleChange} />
@@ -148,9 +155,10 @@ function Login() {
                   className="text-white text-left">
                   New to Netflix ?
                   <button
-                     onClick={toggleAuth} >
-                     {signin ? " Sign Up " : " Sign In "} now
-                  </button>.
+                     onClick={toggleAuth}
+                     className='ml-1' >
+                     {signin ? " Sign Up " : " Sign In "}  now
+                  </button> .
                </p>
             </div>
          </div>

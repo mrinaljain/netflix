@@ -10,8 +10,9 @@
    - Main Movie
       - Trailer 
       - Title & Description
-      - Movie Suggestions
+   - Movie Suggestions
          - Movie List
+          - Movie Cards
 - Search
    - search
    - movie suggestions

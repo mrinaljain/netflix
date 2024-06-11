@@ -1,11 +1,20 @@
 import React from 'react'
-import Header from '../components/Header'
+import MainContainer from '../components/MainContainer';
+import MoviesContainer from '../components/MoviesContainer';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import usePopularMovies from '../hooks/usePopularMovies';
+
 function Browse() {
+   useNowPlayingMovies();
+   usePopularMovies();
    return (
-      <div>
-         <Header />
-      </div>
+      <section>
+         <MainContainer />
+         <MoviesContainer />
+      </section>
    )
 }
 
 export default Browse;
+
+

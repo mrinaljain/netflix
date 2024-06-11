@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "netflix-red": { 100: "#de0914", 50: "#c11119" },
+        "netflix-bg": "#141414",
       },
     },
   },

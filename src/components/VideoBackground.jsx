@@ -11,7 +11,7 @@ function VideoBackground(props) {
    return (
       <iframe
          style={iframeStyle}
-         className='bg-cover object-cover top-0 bottom-0 left-0 right-0 '
+         className=''
          src={"https://www.youtube.com/embed/" + trailer?.key + "?controls=0&modestbranding=1&showinfo=0&rel=0&loop=1&autoplay=1&mute=1"}
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
          allowFullScreen>

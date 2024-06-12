@@ -18,7 +18,8 @@ export const OPTIONS = {
   },
 };
 
-export const NOW_PLAYING = "https://api.themoviedb.org/3/movie/now_playing?page=6";
+export const NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing?page=1";
 export const POPULAR_MOVIES =
   "https://api.themoviedb.org/3/movie/popular?page=2";
 export const TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?page=1";

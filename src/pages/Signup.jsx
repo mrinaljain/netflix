@@ -11,7 +11,7 @@ function Signup() {
    return (
       <div>
          <nav className='bg-transparent fixed w-full z-10  mx-auto'>
-            <div className='flex justify-between max-w-[66%] mx-auto items-center'>
+            <div className='flex justify-between sm:max-w-[66%] mx-auto items-center px-2'>
                <img className='w-36'
                   src={LOGO} alt="netflix-logo" />
                <div>
@@ -19,7 +19,7 @@ function Signup() {
                      name="LanguageSelect"
                      value={lang}
                      onChange={(e) => setlang(e.target.value)}
-                     className='bg-transparent border border-white text-white mr-5 px-3 py-1 rounded-md'>
+                     className='hidden bg-transparent border border-white text-white mr-5 px-3 py-1 rounded-md'>
                      <option lang="en" label="English" value="en-IN"  >English</option>
                      <option lang="hi" label="हिन्दी" value="hi-IN" >हिन्दी</option>
                   </select>

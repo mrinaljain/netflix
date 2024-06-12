@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useSelector } from 'react-redux';
@@ -21,7 +21,7 @@ function Header() {
          <img className='w-36'
             src={LOGO} alt="netflix-logo" />
          <nav className='flex items-center mr-auto gap-3 ml-3'>
-            <NavLink className="text-white font-thin" >Home</NavLink>
+            <NavLink className="text-white font-thin" to={"/browse"} >Home</NavLink>
             <NavLink className="text-white font-thin">TV Shows</NavLink>
             <NavLink className="text-white font-thin">Movies</NavLink>
             <NavLink className="text-white font-thin">New & Popular</NavLink>
@@ -29,7 +29,10 @@ function Header() {
             <NavLink className="text-white font-thin">Browse by Languages</NavLink>
          </nav>
          <div className='flex items-center gap-5'>
-            <button>🔍</button>
+            <Link
+               to="gptsearch"
+               className='flex items-center justify-center w-7 h-7 rounded-full bg-purple-300 text-center'
+            >🔍</Link>
             <span className='text-white mr-2'> {store?.displayName}</span>
             <button>🔔</button>
             <img

@@ -7,11 +7,15 @@ function MoviesContainer() {
    const movies = useSelector((state) => state?.movies);
    const nowPlayingMovies = movies?.nowPlayingMovies;
    const popularMovies = movies?.popularMovies;
+   const topRatedMovies = movies?.topRatedMovies;
+   const upcomingMovies = movies?.upcomingMovies;
    return (
       <div className='bg-netflix-bg'>
          <div className='-mt-48 pl-10 relative z-10'>
             <MovieSlider title="Now Playing Movies" movies={nowPlayingMovies} />
             <MovieSlider title="Popular Movies" movies={popularMovies} />
+            <MovieSlider title="Top Rated Movies" movies={topRatedMovies} />
+            <MovieSlider title="Upcoming Movies" movies={upcomingMovies} />
          </div>
       </div>
    )
